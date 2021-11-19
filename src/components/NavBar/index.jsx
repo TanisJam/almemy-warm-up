@@ -1,40 +1,39 @@
 import React from "react";
+import { NavLink as Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { logOut, selectToken } from "./../../features/login/userSlice";
 
 export default function NavBar() {
-  //Navbar with routes Home and Edit using react-router-dom
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="container">
-        <a className="navbar-brand" href="/">
-          Navbar
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarColor01"
-          aria-controls="navbarColor01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectToken);
+  const history = useHistory();
 
-        <div className="collapse navbar-collapse" id="navbarColor01">
-          <ul className="navbar-nav me-auto">
+  const handleLogout = () => {
+    dispatch(logOut());
+    history.go("/login");
+  };
+
+  return (
+    <nav className="navbar  navbar-dark bg-primary">
+      <div className="container">
+        <ul className="navbar-nav mx-auto d-flex flex-row gap-5">
+          <li className="nav-item">
+            <Link activeClassName="active" className="nav-link" to="/">
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link activeClassName="active" className="nav-link" to="/edit">
+              Edit
+            </Link>
+          </li>
+          {isLoggedIn && (
             <li className="nav-item">
-              <a className="nav-link active" href="/">
-                Home
-                <span className="visually-hidden">(current)</span>
-              </a>
+              <button className="text-dark btn btn-warning" onClick={handleLogout}>Logout</button>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                Edit
-              </a>
-            </li>
-          </ul>
-        </div>
+          )}
+        </ul>
       </div>
     </nav>
   );

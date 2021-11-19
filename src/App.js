@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import LoginForm from "./features/login/LoginForm";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
   return (
@@ -11,9 +11,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/login" component={LoginForm} />
-        <PrivateRoute path="/">
-          <h1>Blog</h1>
-        </PrivateRoute>
+        <PrivateRoutes>
+          <Route exact path="/" render={() => <h1>Home Blog</h1>} />
+          <Route path="/edit" render={() => <h1>Edit</h1>} />
+        </PrivateRoutes>
       </Switch>
     </Router>
   );
