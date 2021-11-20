@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Spinner({ size = false }) {
-  console.log("Spinner", size);
   const styles = {
     width: size ? `${size}rem` : "",
     height: size ? `${size}rem` : "",

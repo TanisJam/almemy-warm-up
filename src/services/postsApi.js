@@ -9,14 +9,29 @@ export const postsApi = createApi({
     getPosts: builder.query({
       query: (page = 1) => `/posts?_page=${page}`,
     }),
+    getPost: builder.query({
+      query: (postId) => `/posts/${postId}`,
+    }),
     addNewPost: builder.mutation({
-      query: (initialPost) => ({
+      query: (post) => ({
         url: "/posts",
         method: "POST",
-        body: initialPost,
+        body: post,
+      }),
+    }),
+    editPost: builder.mutation({
+      query: (post) => ({
+        url: `/posts/${post.id}`,
+        method: "PATCH",
+        body: post,
       }),
     }),
   }),
 });
 
-export const { useGetPostsQuery, useAddNewPostMutation } = postsApi;
+export const {
+  useGetPostsQuery,
+  useGetPostQuery,
+  useAddNewPostMutation,
+  useEditPostMutation,
+} = postsApi;

@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 
 export default function Home() {
   const [page, setPage] = useState(1);
-  const { data = [], isLoading, isFetching } = useGetPostsQuery(page);
+  const { data = [], isLoading } = useGetPostsQuery(page);
   const handlePagination = (_page) => {
     if (_page < 1 || _page > 10) return;
     setPage(_page);
@@ -25,10 +25,12 @@ export default function Home() {
   }
 
   return (
-    <div className="container my-3">
-      {data.map((post) => (
-        <Post key={post.id} post={post} />
-      ))}
+    <div className="container mt-5">
+      <div className="row mx-2">
+        {data.map((post) => (
+          <Post key={post.id} post={post} />
+        ))}
+      </div>
       <Pagination handlePagination={handlePagination} page={page} />
     </div>
   );

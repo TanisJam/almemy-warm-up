@@ -1,13 +1,15 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import Spinner from "./../utils/Spinner";
-import ErrorMsg from "./../utils/ErrorMsg";
+import Spinner from "../utils/Spinner";
+import ErrorMsg from "../utils/ErrorMsg";
 
-export default function AddForm({ handleSubmit, isLoading }) {
+export default function EditForm({ previousPost, handleSubmit, isLoading }) {
+  const { title, body, userId, id } = previousPost;
   const post = {
-    title: "",
-    body: "",
-    userId: 1,
+    title,
+    body,
+    userId,
+    id,
   };
   const validate = (values) => {
     const errors = {};
@@ -50,12 +52,12 @@ export default function AddForm({ handleSubmit, isLoading }) {
             />
             <ErrorMessage name="body" component={ErrorMsg} />
           </div>
-          <div className="d-grid mx-auto py-3" style={{ maxWidth: "15rem" }}>
+          <div className="d-grid mx-auto py-3">
             <button
               type="submit"
               className={`btn btn-primary ${isLoading && "disabled"}`}
             >
-              {isLoading ? <Spinner /> : "Submit"}
+              {isLoading ? <Spinner /> : "Save"}
             </button>
           </div>
         </Form>

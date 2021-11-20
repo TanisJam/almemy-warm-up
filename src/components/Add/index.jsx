@@ -20,8 +20,8 @@ export default function Add() {
   }, [isSuccess, history]);
 
   return (
-    <>
+    <div className="container row d-flex justify-content-center mx-auto">
       <AddForm handleSubmit={handleSubmit} isLoading={isLoading} />
-    </>
+    </div>
   );
 }
