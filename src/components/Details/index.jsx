@@ -1,12 +1,30 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import { useGetPostQuery } from "./../../services/postsApi";
+import React, { useEffect } from "react";
+import { useParams, Link, useHistory } from "react-router-dom";
+import toast from "react-hot-toast";
+import {
+  useGetPostQuery,
+  useDeletePostMutation,
+} from "./../../services/postsApi";
 import capitalize from "../utils/capitalize";
 import Spinner from "./../utils/Spinner";
 
 export default function Details() {
+  const history = useHistory();
   const { id } = useParams();
   const { data, isLoading } = useGetPostQuery(id);
+  const [deletePost, { isSuccess, isLoading: isDeleting }] =
+    useDeletePostMutation();
+
+  const handleDeletePost = () => {
+    deletePost(data.id);
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Post deleted successfully");
+      history.push("/");
+    }
+  }, [isSuccess, history]);
 
   if (isLoading) {
     return (
@@ -32,7 +50,12 @@ export default function Details() {
         <Link to={`/edit/${id}`} className="btn btn-info btn-sm">
           Edit
         </Link>
-        <button className="btn btn-danger btn-sm">Delete</button>
+        <button
+          className={`btn btn-danger btn-sm ${isDeleting && "disabled"}`}
+          onClick={handleDeletePost}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
