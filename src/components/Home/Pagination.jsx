@@ -5,11 +5,16 @@ export default function Pagination({ handlePagination, page }) {
     <div className="d-flex justify-content-center">
       <ul className="pagination">
         <li className={`page-item ${page === 1 && "disabled"}`}>
+          <button className="page-link" onClick={() => handlePagination(1)}>
+            &laquo;
+          </button>
+        </li>
+        <li className={`page-item ${page === 1 && "disabled"}`}>
           <button
             className="page-link"
             onClick={() => handlePagination(page - 1)}
           >
-            &laquo;
+            &lsaquo;
           </button>
         </li>
         <li className="page-item">
@@ -21,6 +26,11 @@ export default function Pagination({ handlePagination, page }) {
             className="page-link"
             onClick={() => handlePagination(page + 1)}
           >
+            &rsaquo;
+          </button>
+        </li>
+        <li className={`page-item ${page === 10 && "disabled"}`}>
+          <button className="page-link" onClick={() => handlePagination(10)}>
             &raquo;
           </button>
         </li>

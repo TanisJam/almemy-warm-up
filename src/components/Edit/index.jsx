@@ -35,7 +35,7 @@ export default function Edit() {
     );
   }
   return (
-    <div className="container d-flex justify-content-center row mx-auto">
+    <div className="container d-flex justify-content-center row mx-auto mt-5">
       <EditForm
         previousPost={data}
         handleSubmit={handleSave}

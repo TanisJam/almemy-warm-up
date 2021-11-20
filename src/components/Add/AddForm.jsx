@@ -24,7 +24,7 @@ export default function AddForm({ handleSubmit, isLoading }) {
     <Formik initialValues={post} onSubmit={handleSubmit} validate={validate}>
       {({ errors, touched }) => (
         <Form
-          className="card bg-light text-center mt-3 px-0 col-sm-8"
+          className="card bg-light text-center px-0 col-sm-8"
           style={{ maxWidth: "40rem" }}
         >
           <div className="form-group card-header pt-3 pb-4">
@@ -53,7 +53,7 @@ export default function AddForm({ handleSubmit, isLoading }) {
           <div className="d-grid mx-auto py-3" style={{ maxWidth: "15rem" }}>
             <button
               type="submit"
-              className={`btn btn-primary ${isLoading && "disabled"}`}
+              className={`btn btn-success ${isLoading && "disabled"}`}
             >
               {isLoading ? <Spinner /> : "Submit"}
             </button>

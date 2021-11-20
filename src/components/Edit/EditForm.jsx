@@ -1,10 +1,12 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useHistory } from "react-router-dom";
 import Spinner from "../utils/Spinner";
 import ErrorMsg from "../utils/ErrorMsg";
 
 export default function EditForm({ previousPost, handleSubmit, isLoading }) {
   const { title, body, userId, id } = previousPost;
+  const history = useHistory();
   const post = {
     title,
     body,
@@ -22,11 +24,15 @@ export default function EditForm({ previousPost, handleSubmit, isLoading }) {
     return errors;
   };
 
+  const handleDiscard = () => {
+    history.push("/");
+  };
+
   return (
     <Formik initialValues={post} onSubmit={handleSubmit} validate={validate}>
       {({ errors, touched }) => (
         <Form
-          className="card bg-light text-center mt-3 px-0 col-sm-8"
+          className="card bg-light text-center px-0 col-sm-8"
           style={{ maxWidth: "40rem" }}
         >
           <div className="form-group card-header pt-3 pb-4">
@@ -52,10 +58,17 @@ export default function EditForm({ previousPost, handleSubmit, isLoading }) {
             />
             <ErrorMessage name="body" component={ErrorMsg} />
           </div>
-          <div className="d-grid mx-auto py-3">
+          <div className="btn-group d-flex mx-auto py-3">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleDiscard}
+            >
+              Discard
+            </button>
             <button
               type="submit"
-              className={`btn btn-primary ${isLoading && "disabled"}`}
+              className={`btn btn-info ${isLoading && "disabled"}`}
             >
               {isLoading ? <Spinner /> : "Save"}
             </button>
