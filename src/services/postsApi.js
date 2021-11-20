@@ -7,7 +7,7 @@ export const postsApi = createApi({
   }),
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => "/posts",
+      query: (page = 1) => `/posts?_page=${page}`,
     }),
     addNewPost: builder.mutation({
       query: (initialPost) => ({

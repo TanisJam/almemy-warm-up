@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 // const LOGIN_URL = "https://node-api-proxy-alkemy.herokuapp.com/";
 const LOGIN_URL = "http://challenge-react.alkemy.org";
@@ -21,10 +22,12 @@ export const logIn = createAsyncThunk("user/logIn", async (data) => {
 
     const respData = response.data;
     localStorage.setItem("USER_TOKEN", respData.token);
-    console.log("Logged in!");
+
+    toast.success("Logged in!");
     return respData;
   } catch ({ response }) {
-    console.log(response.data.error);
+    toast.error(response.data.error);
+
     throw response;
   }
 });

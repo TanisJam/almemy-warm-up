@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Spinner from "./../utils/Spinner";
-import Error from "./Error";
+import ErrorMsg from "./../utils/ErrorMsg";
 
 export default function AddForm({ handleSubmit, isLoading }) {
   const post = {
@@ -36,7 +36,7 @@ export default function AddForm({ handleSubmit, isLoading }) {
                 errors.title && touched.title && "is-invalid"
               }`}
             />
-            <ErrorMessage name="title" component={Error} />
+            <ErrorMessage name="title" component={ErrorMsg} />
           </div>
           <div className="form-group py-3">
             <label htmlFor="body">Post</label>
@@ -48,7 +48,7 @@ export default function AddForm({ handleSubmit, isLoading }) {
                 errors.body && touched.body && "is-invalid"
               }`}
             />
-            <ErrorMessage name="body" component={Error} />
+            <ErrorMessage name="body" component={ErrorMsg} />
           </div>
           <div className="d-grid mx-auto py-3" style={{ maxWidth: "15rem" }}>
             <button
