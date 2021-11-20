@@ -2,9 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, selectToken } from "./userSlice";
 import { Redirect } from "react-router-dom";
-import Form from "./Form";
+import LoginForm from "./LoginForm";
 
-export default function LoginForm() {
+export default function Login() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectToken);
 
@@ -12,15 +12,10 @@ export default function LoginForm() {
     dispatch(logIn(data));
   };
 
-  const component = !isLoggedIn ? (
-    <Form onLogin={handleLogin} />
-  ) : (
-    <Redirect
-      to={{
-        pathname: "/",
-      }}
-    />
-  );
+  const component = (() => {
+    if (isLoggedIn) return <Redirect to={{ pathname: "/" }} />;
+    return <LoginForm onLogin={handleLogin} />;
+  })();
 
   return component;
 }

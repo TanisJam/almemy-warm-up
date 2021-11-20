@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectStatus } from "./userSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Spinner from "../../components/utils/Spinner";
 
 export default function Login({ onLogin }) {
   const status = useSelector(selectStatus);
@@ -32,22 +33,20 @@ export default function Login({ onLogin }) {
         {({ isSubmitting, values }) => (
           <div className="row mb-5 mx-auto" style={{ maxWidth: "20rem" }}>
             <Form className="form mx-auto form-group">
-              <div className="form-group form-floating my-2 positio-relative">
+              <div className="form-group form-floating my-2">
                 <Field
                   type="email"
                   name="email"
                   className="form-control"
-                  id="emailInput"
                   placeholder="Email here..."
-                  autoComplete="off"
                 />
                 <label htmlFor="emailInput" className="">
                   Email
                 </label>
                 <ErrorMessage
                   name="email"
-                  component="div"
-                  className="position-absolute bottom-0 start-50 translate-middle-x text-danger badge"
+                  component="span"
+                  className="position-absolute bottom-0 start-50  text-danger badge"
                 />
               </div>
 
@@ -56,9 +55,7 @@ export default function Login({ onLogin }) {
                   type="password"
                   name="password"
                   className="form-control"
-                  id="passwordInput"
                   placeholder="Password here..."
-                  autoComplete="off"
                   value={values.password}
                 />
                 <label htmlFor="passwordInput" className="">
@@ -66,8 +63,8 @@ export default function Login({ onLogin }) {
                 </label>
                 <ErrorMessage
                   name="password"
-                  component="div"
-                  className="position-absolute bottom-0 start-50 translate-middle-x text-danger badge"
+                  component="span"
+                  className="position-absolute bottom-0 start-50 text-danger badge"
                 />
               </div>
               <div className="d-grid">
@@ -76,16 +73,7 @@ export default function Login({ onLogin }) {
                   className="btn btn-primary p-3"
                   disabled={status !== "idle"}
                 >
-                  {status !== "idle" ? (
-                    <div
-                      className="spinner-border spinner-border-sm text-white"
-                      role="status"
-                    >
-                      <span className="visually-hidden">Loading...</span>
-                    </div>
-                  ) : (
-                    "Login"
-                  )}
+                  {status !== "idle" ? <Spinner /> : "Login"}
                 </button>
               </div>
             </Form>

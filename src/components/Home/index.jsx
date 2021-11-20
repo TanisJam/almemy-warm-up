@@ -1,16 +1,16 @@
 import React from "react";
 import { useGetPostsQuery } from "./../../services/postsApi";
+import Post from "./Post";
 
 export default function Home() {
   const { data = [], isLoading, isSuccess } = useGetPostsQuery();
-  console.log(data[0]);
+
   return (
-    <>
-      <div>Home</div>
+    <div className="container my-3">
       {isLoading && <div>Loading...</div>}
-      {isSuccess && data && data.map((post) => (
-        <div key={post.id}>{post.title}</div>
-      ))}
-    </>
+      {isSuccess &&
+        data &&
+        data.map((post) => <Post key={post.id} post={post} />)}
+    </div>
   );
 }

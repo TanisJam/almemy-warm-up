@@ -9,7 +9,14 @@ export const postsApi = createApi({
     getPosts: builder.query({
       query: () => "/posts",
     }),
+    addNewPost: builder.mutation({
+      query: (initialPost) => ({
+        url: "/posts",
+        method: "POST",
+        body: initialPost,
+      }),
+    }),
   }),
 });
 
-export const { useGetPostsQuery } = postsApi;
+export const { useGetPostsQuery, useAddNewPostMutation } = postsApi;
