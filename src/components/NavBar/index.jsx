@@ -19,29 +19,36 @@ export default function NavBar() {
       <div className="container">
         <ul className="navbar-nav container-fluid d-flex gap-3 flex-row align-items-center">
           <li className="nav-item">
-            <Link activeClassName="active" className="nav-link fw-bold" to="/" exact>
+            <Link
+              activeClassName="active"
+              className="nav-link fw-bold"
+              to="/"
+              exact
+            >
               Home
             </Link>
           </li>
 
-          <li className="nav-item">
-            <Link
-              activeClassName="active"
-              className="nav-link btn btn-success fw-bold px-3"
-              to="/add"
-            >
-              Add
-            </Link>
-          </li>
           {isLoggedIn && (
-            <li className="nav-item ms-auto">
-              <button
-                className="text-dark btn btn-sm btn-warning"
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
-            </li>
+            <>
+              <li className="nav-item">
+                <Link
+                  activeClassName="active"
+                  className="nav-link btn btn-success fw-bold px-3"
+                  to="/add"
+                >
+                  Add
+                </Link>
+              </li>
+              <li className="nav-item ms-auto">
+                <button
+                  className="text-dark btn btn-sm btn-warning"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </li>
+            </>
           )}
         </ul>
       </div>

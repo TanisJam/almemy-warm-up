@@ -25,11 +25,25 @@ export default function Home() {
   }
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-1">
       <div className="row mx-2">
-        {data.map((post) => (
-          <Post key={post.id} post={post} />
-        ))}
+        <table
+          className="table table-hover table-striped mx-auto"
+          style={{ maxWidth: "540px" }}
+        >
+          <thead>
+            <tr className="text-center">
+              <th scope="col">Title</th>
+              <th scope="col">ID</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((post) => (
+              <Post key={post.id} post={post} />
+            ))}
+          </tbody>
+        </table>
       </div>
       <Pagination handlePagination={handlePagination} page={page} />
     </div>

@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 export default function Post({ post }) {
   const [deletePost, { isSuccess, isLoading }] = useDeletePostMutation();
-  const { title, body, id } = post;
+  const { title, id } = post;
 
   const handleDeletePost = () => {
     deletePost(id);
@@ -23,28 +23,25 @@ export default function Post({ post }) {
   }
 
   return (
-    <div className="card bg-light mb-3 px-0 col-md-5 mx-auto">
-      <div className="card-header d-flex justify-content-between">
-        <strong>{capitalize(title)}</strong>
-        <span className="badge bg-info mb-auto">#{id}</span>
-      </div>
-      <div className="card-body">
-        <p className="card-text">{capitalize(body)}</p>
-      </div>
-      <div className="cad-footer btn-group">
-        <Link to={`/details/${id}`} className="btn btn-success btn-sm">
-          View more
-        </Link>
-        <Link to={`/edit/${id}`} className="btn btn-info btn-sm">
-          Edit
-        </Link>
-        <button
-          className={`btn btn-danger btn-sm ${isLoading && "disabled"}`}
-          onClick={handleDeletePost}
-        >
-          Delete
-        </button>
-      </div>
-    </div>
+    <tr>
+      <th>{capitalize(title.slice(0, 20))}...</th>
+      <td className="align-middle">{id}</td>
+      <td className="align-middle">
+        <div className="btn-group align-center">
+          <Link to={`/details/${id}`} className="btn btn-success btn-sm">
+            More
+          </Link>
+          <Link to={`/edit/${id}`} className="btn btn-info btn-sm">
+            Edit
+          </Link>
+          <button
+            className={`btn btn-danger btn-sm ${isLoading && "disabled"}`}
+            onClick={handleDeletePost}
+          >
+            Delete
+          </button>
+        </div>
+      </td>
+    </tr>
   );
 }

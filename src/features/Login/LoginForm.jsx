@@ -30,7 +30,7 @@ export default function Login({ onLogin }) {
           setSubmitting(false);
         }}
       >
-        {({ isSubmitting, values }) => (
+        {({ values }) => (
           <div className="row mb-5 mx-auto" style={{ maxWidth: "20rem" }}>
             <Form className="form mx-auto form-group">
               <div className="form-group form-floating my-2">

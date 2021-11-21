@@ -47,6 +47,12 @@ export default function Details() {
         Created by <cite title="Source Title">User #{data.userId}</cite>
       </figcaption>
       <div className="cad-footer btn-group">
+        <button
+          className="btn btn-success btn-sm"
+          onClick={() => history.goBack()}
+        >
+          Back
+        </button>
         <Link to={`/edit/${id}`} className="btn btn-info btn-sm">
           Edit
         </Link>
