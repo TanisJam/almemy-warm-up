@@ -2,8 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-// const LOGIN_URL = "https://node-api-proxy-alkemy.herokuapp.com/";
-const LOGIN_URL = "http://challenge-react.alkemy.org";
+//check if is production or development
+const isProduction = process.env.NODE_ENV === "production";
+
+const URL_PROD = "https://node-api-proxy-alkemy.herokuapp.com/";
+const LOGIN_DEV = "http://challenge-react.alkemy.org";
+
+const LOGIN_URL = isProduction ? URL_PROD : LOGIN_DEV;
 
 const user = localStorage.getItem("USER_TOKEN");
 
