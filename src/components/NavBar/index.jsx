@@ -1,4 +1,5 @@
 import React from "react";
+import Actions from "./Actions";
 import { NavLink as Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -28,28 +29,7 @@ export default function NavBar() {
               Home
             </Link>
           </li>
-
-          {isLoggedIn && (
-            <>
-              <li className="nav-item">
-                <Link
-                  activeClassName="active"
-                  className="nav-link btn btn-success fw-bold px-3"
-                  to="/add"
-                >
-                  Add
-                </Link>
-              </li>
-              <li className="nav-item ms-auto">
-                <button
-                  className="text-dark btn btn-sm btn-warning"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-              </li>
-            </>
-          )}
+          {isLoggedIn && <Actions handleLogout={handleLogout} />}
         </ul>
       </div>
     </nav>

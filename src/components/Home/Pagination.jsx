@@ -3,7 +3,7 @@ import React from "react";
 export default function Pagination({ handlePagination, page }) {
   return (
     <div className="d-flex justify-content-center">
-      <ul className="pagination">
+      <ul className="pagination pagination-lg">
         <li className={`page-item ${page === 1 && "disabled"}`}>
           <button className="page-link" onClick={() => handlePagination(1)}>
             &laquo;

@@ -5,6 +5,7 @@ import Login from "./features/Login";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Home from "./components/Home";
 import Edit from "./components/Edit";
+import EditById from "./components/Edit/EditById";
 import Add from "./components/Add";
 import Details from "./components/Details";
 import { Toaster } from "react-hot-toast";
@@ -18,6 +19,7 @@ function App() {
         <PrivateRoutes>
           <Route exact path="/" render={() => <Home />} />
           <Route path="/details/:id" render={() => <Details />} />
+          <Route exact path="/edit/" render={() => <EditById />} />
           <Route path="/edit/:id" render={() => <Edit />} />
           <Route path="/add" render={() => <Add />} />
         </PrivateRoutes>

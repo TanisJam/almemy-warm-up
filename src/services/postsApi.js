@@ -12,6 +12,9 @@ export const postsApi = createApi({
     getPost: builder.query({
       query: (postId) => `/posts/${postId}`,
     }),
+    checkPostId: builder.mutation({
+      query: (id) => `/posts/${id}`,
+    }),
     addNewPost: builder.mutation({
       query: (post) => ({
         url: "/posts",
@@ -41,4 +44,5 @@ export const {
   useAddNewPostMutation,
   useEditPostMutation,
   useDeletePostMutation,
+  useCheckPostIdMutation,
 } = postsApi;

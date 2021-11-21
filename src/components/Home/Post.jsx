@@ -9,7 +9,8 @@ export default function Post({ post }) {
   const { title, id } = post;
 
   const handleDeletePost = () => {
-    deletePost(id);
+    window.confirm("Are you sure you want to delete this post?") &&
+      deletePost(id);
   };
 
   useEffect(() => {
