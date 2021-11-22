@@ -25,10 +25,10 @@ export default function Post({ post }) {
 
   return (
     <tr>
-      <th>{capitalize(title.slice(0, 20))}...</th>
-      <td className="align-middle">{id}</td>
-      <td className="align-middle">
-        <div className="btn-group align-center">
+      <th className="text-center">{capitalize(title.slice(0, 20))}...</th>
+      <td className="align-middle text-center">{id}</td>
+      <td className="align-middle text-center">
+        <div className="btn-group">
           <Link to={`/details/${id}`} className="btn btn-success btn-sm">
             More
           </Link>

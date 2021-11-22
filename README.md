@@ -5,8 +5,17 @@ They use [{JSON} Placeholder](https://jsonplaceholder.typicode.com/) fake endpoi
 
 It requires to do the following:
 
-- [ ] Fethcing data from the API
-- [ ] Displaying data in the browser
-- [ ] Creating a new post
-- [ ] Updating a post
-- [ ] Deleting a post
+- [x] Fethcing data from the API
+- [x] Displaying data in the browser
+- [x] Creating a new post
+- [x] Updating a post
+- [x] Deleting a post
+
+&nbsp;
+
+Valid credentials are:
+
+```
+Email: challenge@alkemy.org
+Password: react
+```
