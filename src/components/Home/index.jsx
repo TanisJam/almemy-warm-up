@@ -40,7 +40,7 @@ export default function Home() {
           </thead>
           <tbody>
             {data.map((post) => (
-              <Post key={post.id} post={post} />
+              <Post key={post.id.toString()} post={post} />
             ))}
           </tbody>
         </table>
